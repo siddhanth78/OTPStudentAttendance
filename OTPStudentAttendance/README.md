@@ -1,6 +1,6 @@
-Python 3.7+
+##Python 3.7+
 
-Python modules:
+##Python modules:
 *os
 *python-mysql-connector
 *datetime
@@ -9,15 +9,15 @@ Python modules:
 *csv
 *random
 
-Apps:
+##Apps:
 *Excel
 *Python 3.7+ (Download from official Python site)
 
-Requires stable internet connection to run.
+##Requires stable internet connection to run.
 
-Currently for demo purposes only.
+##Currently for demo purposes only.
 
-Acceptable demo student values:
+##Acceptable demo student values:
 *id-12A001
  *name-Andril
  *class-12
@@ -30,7 +30,7 @@ Acceptable demo student values:
  *combination-PCMC
  
 
-Acceptable demo teacher values:
+##Acceptable demo teacher values:
 *id-CHE001
  *name-Vani
  *passw-vani123
