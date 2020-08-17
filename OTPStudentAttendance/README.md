@@ -1,6 +1,7 @@
 ##Python 3.7+
 
 ##Python modules:
+
 *os
 *python-mysql-connector
 *datetime
@@ -10,6 +11,7 @@
 *random
 
 ##Apps:
+
 *Excel
 *Python 3.7+ (Download from official Python site)
 
@@ -18,6 +20,7 @@
 ##Currently for demo purposes only.
 
 ##Acceptable demo student values:
+
 *id-12A001
  *name-Andril
  *class-12
@@ -31,6 +34,7 @@
  
 
 ##Acceptable demo teacher values:
+
 *id-CHE001
  *name-Vani
  *passw-vani123
