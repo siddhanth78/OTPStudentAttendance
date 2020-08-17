@@ -280,7 +280,6 @@ class win:
             
             self.msgbox.showinfo("OTP",
                                 "OTP : "+newotp+"\nCaution : Leave this message open to accept attendance.\nClose this message to close attendance window.\nThis page will close automatically.")
-            self.master.destroy()
             
             self.cursor.execute(f"delete from otplist where id = '{tid}'")
             self.db.commit()
@@ -291,6 +290,7 @@ class win:
             self.db.commit()
             
             self.msgbox.showinfo("Report","Attendance report has been created and sent.")
+            self.master.destroy()
             return
         except:
             dd = datetime.datetime.now().date()
