@@ -6,6 +6,7 @@ class win:
 
     x = os.getcwd()
     x = x.replace('\\','/')
+    x = x+"/Attendance"
 
     def __init__(self , master):
         
