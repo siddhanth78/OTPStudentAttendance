@@ -1,0 +1,16 @@
+Python 3.7+
+
+Python modules:
+os
+python-mysql-connector
+datetime
+time
+tkinter
+csv
+random
+
+Apps:
+Excel
+Python 3.7+ (Download from official Python site)
+
+Requires stable internet connection to run.
