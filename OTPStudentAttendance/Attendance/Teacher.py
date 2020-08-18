@@ -340,6 +340,8 @@ class win:
                 pass
             else:
                 self.msgbox.showwarning("Invalid","Check the information submitted and try again.")
+                self.secentry.bind("<Enter>",self.secenter)
+                self.secentry.bind("<Leave>",self.secleave)
                 return
 
             self.cursor.execute(f"drop table if exists {na}_{cl}{sec}_{su}_{date}")
