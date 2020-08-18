@@ -21,6 +21,7 @@ class win:
         
         self.master.geometry("730x300+300+300")
         self.master.title("Attendance")
+        self.master.configure(background='black')
         
         self.cursor = self.db.cursor(buffered=True)
 
@@ -43,51 +44,47 @@ class win:
         win.v7s = IntVar()
         win.v7f = IntVar()
 
-        self.titlelab = Label(self.master,text = "Press 'Enter' to lock your response",width=50)
+        self.titlelab = Label(self.master,text = "Press 'Enter' to lock your response",width=50,bg='black',fg='orange')
         self.titlelab.pack(anchor=CENTER)
 
-        self.attbut = Button(self.master,text = "Attendance Records",width=50,bg="powder blue",command = self.att)
+        self.attbut = Button(self.master,text = "Attendance Records",width=50,bg='black',fg='orange',command = self.att)
         self.attbut.pack(anchor=CENTER)
 
-        self.seplab1 = Label(master)
+        self.seplab1 = Label(master,bg='black')
         self.seplab1.pack(anchor=CENTER)
 
-        self.identry = Entry(self.master,textvariable=win.v1,width=50,relief=SUNKEN,justify=CENTER)
+        self.identry = Entry(self.master,textvariable=win.v1,width=50,relief=SUNKEN,justify=CENTER,bg='black',fg='orange')
         self.identry.insert(0,'Teacher ID')
-        self.identry.config(state='disabled')
         self.identry.bind("<Enter>",self.identer)
         self.identry.bind("<Leave>",self.idleave)
         self.identry.bind("<Return>",self.idclose)
         self.identry.pack(anchor=CENTER)
 
-        self.passentry = Entry(self.master,textvariable=win.v4,width=50,relief=SUNKEN,justify=CENTER)
+        self.passentry = Entry(self.master,textvariable=win.v4,width=50,relief=SUNKEN,justify=CENTER,bg='black',fg='orange')
         self.passentry.insert(0,'Password')
-        self.passentry.config(state='disabled')
         self.passentry.bind("<Enter>",self.passenter)
         self.passentry.bind("<Leave>",self.passleave)
         self.passentry.bind("<Return>",self.passclose)
         self.passentry.pack(anchor=CENTER)
 
-        self.classentry = Entry(self.master,textvariable=win.v2,width=50,relief=SUNKEN,justify=CENTER)
+        self.classentry = Entry(self.master,textvariable=win.v2,width=50,relief=SUNKEN,justify=CENTER,bg='black',fg='orange')
         self.classentry.insert(0,'Class')
-        self.classentry.config(state='disabled')
         self.classentry.bind("<Enter>",self.classenter)
         self.classentry.bind("<Leave>",self.classleave)
         self.classentry.bind("<Return>",self.classclose)
         self.classentry.pack(anchor=CENTER)
 
-        self.secentry = Entry(self.master,textvariable=win.v3,width=50,relief=SUNKEN,justify=CENTER)
+        self.secentry = Entry(self.master,textvariable=win.v3,width=50,relief=SUNKEN,justify=CENTER,bg='black',fg='orange')
         self.secentry.insert(0,'Section')
-        self.secentry.config(state='disabled')
         self.secentry.bind("<Enter>",self.secenter)
         self.secentry.bind("<Leave>",self.secleave)
         self.secentry.bind("<Return>",self.secclose)
         self.secentry.pack(anchor=CENTER)
 
-        self.seplab2 = Label(master)
+        self.seplab2 = Label(master,bg='black')
         self.seplab2.pack(anchor=CENTER)
 
-        self.menubutton4 = Menubutton(self.master, text = "IV Subject", relief = RAISED,bg="powder blue",width=50)  
+        self.menubutton4 = Menubutton(self.master, text = "IV Subject", relief = RAISED,bg='black',fg='orange',width=50)  
         self.menubutton4.pack(anchor=CENTER)
         self.menubutton4.menu = Menu(self.menubutton4)  
         self.menubutton4["menu"]=self.menubutton4.menu  
@@ -96,7 +93,7 @@ class win:
         self.menubutton4.menu.add_checkbutton(label = "PE", variable = win.v5p)
         self.menubutton4.pack()
 
-        self.menubutton = Menubutton(self.master, text = "II Language", relief = RAISED,bg="powder blue",width=50)  
+        self.menubutton = Menubutton(self.master, text = "II Language", relief = RAISED,bg='black',fg='orange',width=50)  
         self.menubutton.pack(anchor=CENTER)
         self.menubutton.menu = Menu(self.menubutton)  
         self.menubutton["menu"]=self.menubutton.menu  
@@ -106,7 +103,7 @@ class win:
         self.menubutton.menu.add_checkbutton(label = "French", variable = win.v6f)
         self.menubutton.pack()
 
-        self.menubutton2 = Menubutton(self.master, text = "III Language", relief = RAISED,bg="powder blue",width=50)  
+        self.menubutton2 = Menubutton(self.master, text = "III Language", relief = RAISED,bg='black',fg='orange',width=50)  
         self.menubutton2.pack(anchor=CENTER)
         self.menubutton2.menu = Menu(self.menubutton2)  
         self.menubutton2["menu"]=self.menubutton2.menu  
@@ -116,73 +113,77 @@ class win:
         self.menubutton2.menu.add_checkbutton(label = "French", variable = win.v7f)
         self.menubutton2.pack()
 
-        self.nslab = Label(self.master,text = "-----",width=50)
+        self.nslab = Label(self.master,text = "-----",width=50,bg='black',fg='orange')
         self.nslab.pack(anchor=CENTER)
 
-        self.enterbutton = Button(self.master,text = "OK",width=50,bg="powder blue",command=self.generate)
+        self.enterbutton = Button(self.master,text = "OK",width=50,bg='black',fg='orange',command=self.generate)
         self.enterbutton.pack(anchor=CENTER)
 
         self.msgbox = messagebox
 
 
     def identer(self,event):
-        self.identry.config(state='normal')
         self.identry.delete(0,'end')
+        self.identry.config(fg='black',bg='orange')
 
     def idleave(self,event):
+        self.identry.delete(0,'end')
+        self.identry.config(bg='black',fg='orange')
         self.identry.insert(0,'Teacher ID')
-        self.identry.config(state='disabled')
 
     def idclose(self,event):
         ident = self.identry.get()
         if ident.strip()=='':
             return
-        self.identry.config(state='disabled')
+        self.identry.config(bg='black',fg='orange')
         self.identry.unbind("<Enter>")
         self.identry.unbind("<Leave>")
 
     def passenter(self,event):
-        self.passentry.config(show='*',state='normal')
+        self.passentry.config(show='*',fg='black',bg='orange')
         self.passentry.delete(0,'end')
 
     def passleave(self,event):
+        self.passentry.delete(0,'end')
+        self.passentry.config(show='',bg='black',fg='orange')
         self.passentry.insert(0,'Password')
-        self.passentry.config(show='',state='disabled')
 
     def passclose(self,event):
         passent = self.passentry.get()
         if passent.strip()=='':
             return
-        self.passentry.config(show='*',state='disabled')
+        self.passentry.config(show='*',bg='black',fg='orange')
         self.passentry.unbind("<Enter>")
         self.passentry.unbind("<Leave>")
 
     def classenter(self,event):
-        self.classentry.config(state='normal')
         self.classentry.delete(0,'end')
+        self.classentry.config(fg='black',bg='orange')
 
     def classleave(self,event):
+        self.classentry.delete(0,'end')
+        self.classentry.config(bg='black',fg='orange')
         self.classentry.insert(0,'Class')
-        self.classentry.config(state='disabled')
 
     def classclose(self,event):
         clent = self.classentry.get()
         if clent.strip()=='':
             return
-        self.classentry.config(state='disabled')
+        self.classentry.config(bg='black',fg='orange')
         self.classentry.unbind("<Enter>")
         self.classentry.unbind("<Leave>")
 
     def secenter(self,event):
-        self.secentry.config(state='normal')
         self.secentry.delete(0,'end')
+        self.secentry.config(fg='black',bg='orange')
 
     def secleave(self,event):
+        self.secentry.delete(0,'end')
+        self.secentry.config(bg='black',fg='orange')
         self.secentry.insert(0,'Section')
-        self.secentry.config(state='disabled')
 
     def secclose(self,event):
-        self.secentry.config(state='disabled')
+        self.secentry.config(bg='black',fg='orange')
         self.secentry.unbind("<Enter>")
         self.secentry.unbind("<Leave>")
         
