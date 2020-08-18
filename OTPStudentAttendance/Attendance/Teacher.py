@@ -43,88 +43,148 @@ class win:
         win.v7s = IntVar()
         win.v7f = IntVar()
 
-        self.titlelab = Label(self.master,text = "Student Attendance",width=55)
-        self.titlelab.grid(row=0,column=0)
+        self.titlelab = Label(self.master,text = "Press 'Enter' to lock your response",width=50)
+        self.titlelab.pack(anchor=CENTER)
 
-        self.attbut = Button(self.master,text = "Attendance Records",width=40,bg="powder blue",command = self.att)
-        self.attbut.grid(row=0,column=1)
+        self.attbut = Button(self.master,text = "Attendance Records",width=50,bg="powder blue",command = self.att)
+        self.attbut.pack(anchor=CENTER)
 
-        self.titlelab = Label(self.master,text = "IV subject(XI and XII)  II lang(I to X)  III lang(VI to VIII)",width=55)
-        self.titlelab.grid(row=1,column=0)
+        self.seplab1 = Label(master)
+        self.seplab1.pack(anchor=CENTER)
 
-        self.idlab = Label(self.master,text = "Teacher ID",width=55)
-        self.idlab.grid(row=2,column=0)
+        self.identry = Entry(self.master,textvariable=win.v1,width=50,relief=SUNKEN,justify=CENTER)
+        self.identry.insert(0,'Teacher ID')
+        self.identry.config(state='disabled')
+        self.identry.bind("<Enter>",self.identer)
+        self.identry.bind("<Leave>",self.idleave)
+        self.identry.bind("<Return>",self.idclose)
+        self.identry.pack(anchor=CENTER)
 
-        self.identry = Entry(self.master,textvariable=win.v1,width=30,relief=SUNKEN)
-        self.identry.grid(row=2,column=1)
+        self.passentry = Entry(self.master,textvariable=win.v4,width=50,relief=SUNKEN,justify=CENTER)
+        self.passentry.insert(0,'Password')
+        self.passentry.config(state='disabled')
+        self.passentry.bind("<Enter>",self.passenter)
+        self.passentry.bind("<Leave>",self.passleave)
+        self.passentry.bind("<Return>",self.passclose)
+        self.passentry.pack(anchor=CENTER)
 
-        self.passlab = Label(self.master,text = "Password",width=55)
-        self.passlab.grid(row=3,column=0)
+        self.classentry = Entry(self.master,textvariable=win.v2,width=50,relief=SUNKEN,justify=CENTER)
+        self.classentry.insert(0,'Class')
+        self.classentry.config(state='disabled')
+        self.classentry.bind("<Enter>",self.classenter)
+        self.classentry.bind("<Leave>",self.classleave)
+        self.classentry.bind("<Return>",self.classclose)
+        self.classentry.pack(anchor=CENTER)
 
-        self.passentry = Entry(self.master,textvariable=win.v4,width=30,relief=SUNKEN,show="*")
-        self.passentry.grid(row=3,column=1)
+        self.secentry = Entry(self.master,textvariable=win.v3,width=50,relief=SUNKEN,justify=CENTER)
+        self.secentry.insert(0,'Section')
+        self.secentry.config(state='disabled')
+        self.secentry.bind("<Enter>",self.secenter)
+        self.secentry.bind("<Leave>",self.secleave)
+        self.secentry.bind("<Return>",self.secclose)
+        self.secentry.pack(anchor=CENTER)
 
-        self.classlab = Label(self.master,text = "Class / Standard / Grade",width=55)
-        self.classlab.grid(row=4,column=0)
-
-        self.classentry = Entry(self.master,textvariable=win.v2,width=10,relief=SUNKEN)
-        self.classentry.grid(row=4,column=1)
-
-        self.seclab = Label(self.master,text = "Section (Not required for IV subject, II lang and III lang)",width=55)
-        self.seclab.grid(row=5,column=0)
-
-        self.secentry = Entry(self.master,textvariable=win.v3,width=10,relief=SUNKEN)
-        self.secentry.grid(row=5,column=1)
-
-        self.sslab = Label(self.master,text = "For IV subject and Math/PE optional",width=55)
-        self.sslab.grid(row=6,column=0)
+        self.seplab2 = Label(master)
+        self.seplab2.pack(anchor=CENTER)
 
         self.menubutton4 = Menubutton(self.master, text = "IV Subject", relief = RAISED,bg="powder blue",width=50)  
-        self.menubutton4.grid(row=6,column=1)  
+        self.menubutton4.pack(anchor=CENTER)
         self.menubutton4.menu = Menu(self.menubutton4)  
         self.menubutton4["menu"]=self.menubutton4.menu  
         self.menubutton4.menu.add_checkbutton(label = "Computers", variable=win.v5c)  
         self.menubutton4.menu.add_checkbutton(label = "Biology", variable=win.v5b)  
         self.menubutton4.menu.add_checkbutton(label = "PE", variable = win.v5p)
-        self.menubutton4.grid()
-
-
-        self.l2lab = Label(self.master,text = "For II language only",width=55)
-        self.l2lab.grid(row=8,column=0)
+        self.menubutton4.pack()
 
         self.menubutton = Menubutton(self.master, text = "II Language", relief = RAISED,bg="powder blue",width=50)  
-        self.menubutton.grid(row=8,column=1)  
+        self.menubutton.pack(anchor=CENTER)
         self.menubutton.menu = Menu(self.menubutton)  
         self.menubutton["menu"]=self.menubutton.menu  
         self.menubutton.menu.add_checkbutton(label = "Hindi", variable=win.v6h)  
         self.menubutton.menu.add_checkbutton(label = "Kannada", variable=win.v6k)  
         self.menubutton.menu.add_checkbutton(label = "Sanskrit", variable = win.v6s)
         self.menubutton.menu.add_checkbutton(label = "French", variable = win.v6f)
-        self.menubutton.grid()
-
-        self.l3lab = Label(self.master,text = "For III language only",width=55)
-        self.l3lab.grid(row=9,column=0)
+        self.menubutton.pack()
 
         self.menubutton2 = Menubutton(self.master, text = "III Language", relief = RAISED,bg="powder blue",width=50)  
-        self.menubutton2.grid(row=9,column=1)  
+        self.menubutton2.pack(anchor=CENTER)
         self.menubutton2.menu = Menu(self.menubutton2)  
         self.menubutton2["menu"]=self.menubutton2.menu  
         self.menubutton2.menu.add_checkbutton(label = "Hindi", variable=win.v7h)  
         self.menubutton2.menu.add_checkbutton(label = "Kannada", variable=win.v7k)  
         self.menubutton2.menu.add_checkbutton(label = "Sanskrit", variable = win.v7s)
         self.menubutton2.menu.add_checkbutton(label = "French", variable = win.v7f)
-        self.menubutton2.grid()
-
-        self.infolab = Label(self.master,text = "Details",width=55)
-        self.infolab.grid(row=10,column=0)
+        self.menubutton2.pack()
 
         self.nslab = Label(self.master,text = "-----",width=50)
-        self.nslab.grid(row=10,column=1)
+        self.nslab.pack(anchor=CENTER)
 
-        self.enterbutton = Button(self.master,text = "OK",width=55,bg="powder blue",command=self.generate)
-        self.enterbutton.grid(row=11,column=0)
+        self.enterbutton = Button(self.master,text = "OK",width=50,bg="powder blue",command=self.generate)
+        self.enterbutton.pack(anchor=CENTER)
 
         self.msgbox = messagebox
+
+
+    def identer(self,event):
+        self.identry.config(state='normal')
+        self.identry.delete(0,'end')
+
+    def idleave(self,event):
+        self.identry.insert(0,'Teacher ID')
+        self.identry.config(state='disabled')
+
+    def idclose(self,event):
+        ident = self.identry.get()
+        if ident.strip()=='':
+            return
+        self.identry.config(state='disabled')
+        self.identry.unbind("<Enter>")
+        self.identry.unbind("<Leave>")
+
+    def passenter(self,event):
+        self.passentry.config(show='*',state='normal')
+        self.passentry.delete(0,'end')
+
+    def passleave(self,event):
+        self.passentry.insert(0,'Password')
+        self.passentry.config(show='',state='disabled')
+
+    def passclose(self,event):
+        passent = self.passentry.get()
+        if passent.strip()=='':
+            return
+        self.passentry.config(show='*',state='disabled')
+        self.passentry.unbind("<Enter>")
+        self.passentry.unbind("<Leave>")
+
+    def classenter(self,event):
+        self.classentry.config(state='normal')
+        self.classentry.delete(0,'end')
+
+    def classleave(self,event):
+        self.classentry.insert(0,'Class')
+        self.classentry.config(state='disabled')
+
+    def classclose(self,event):
+        clent = self.classentry.get()
+        if clent.strip()=='':
+            return
+        self.classentry.config(state='disabled')
+        self.classentry.unbind("<Enter>")
+        self.classentry.unbind("<Leave>")
+
+    def secenter(self,event):
+        self.secentry.config(state='normal')
+        self.secentry.delete(0,'end')
+
+    def secleave(self,event):
+        self.secentry.insert(0,'Section')
+        self.secentry.config(state='disabled')
+
+    def secclose(self,event):
+        self.secentry.config(state='disabled')
+        self.secentry.unbind("<Enter>")
+        self.secentry.unbind("<Leave>")
         
 
     def generate(self):
@@ -138,6 +198,30 @@ class win:
         sec = sec.strip().upper()
         passw = win.v4.get()
         passw = passw.strip()
+
+        if tid == 'Teacher ID'.upper():
+            self.msgbox.showwarning("Invalid","Check the information submitted and try again.")
+            self.identry.bind("<Enter>",self.identer)
+            self.identry.bind("<Leave>",self.idleave)
+            return
+
+        if cl == 'Class':
+            self.msgbox.showwarning("Invalid","Check the information submitted and try again.")
+            self.classentry.bind("<Enter>",self.classenter)
+            self.classentry.bind("<Leave>",self.classleave)
+            return
+
+        if sec == 'Section'.upper():
+            self.msgbox.showwarning("Invalid","Check the information submitted and try again.")
+            self.secentry.bind("<Enter>",self.secenter)
+            self.secentry.bind("<Leave>",self.secleave)
+            return
+
+        if passw == 'Password':
+            self.msgbox.showwarning("Invalid","Check the information submitted and try again.")
+            self.passentry.bind("<Enter>",self.passenter)
+            self.passentry.bind("<Leave>",self.passleave)
+            return
         
         ssc = win.v5c.get()
         ssb = win.v5b.get()
@@ -209,6 +293,8 @@ class win:
                 liteach.append(x[0])
             if tid not in liteach:
                 self.msgbox.showwarning("Invalid","Check credentials and try again.")
+                self.identry.bind("<Enter>",self.identer)
+                self.identry.bind("<Leave>",self.idleave)
                 return
             else:
                 self.cursor.execute(f"select name,subject from teacherlist where id = '{tid}'")
@@ -224,6 +310,8 @@ class win:
                 
             if passw != passver:
                 self.msgbox.showwarning("Invalid","Check credentials and try again.")
+                self.passentry.bind("<Enter>",self.passenter)
+                self.passentry.bind("<Leave>",self.passleave)
                 return
             else:
                 pass
@@ -267,6 +355,10 @@ class win:
                 self.cursor.execute(f"select id,name from studentlist where class = '{cl}' and III_lang = '%{l3}%'")
             else:
                 self.msgbox.showwarning("Invalid","Check the information submitted and try again.")
+                self.classentry.bind("<Enter>",self.classenter)
+                self.classentry.bind("<Leave>",self.classleave)
+                self.secentry.bind("<Enter>",self.secenter)
+                self.secentry.bind("<Leave>",self.secleave)
                 return
             
             for x in self.cursor:
@@ -288,8 +380,7 @@ class win:
             
             self.cursor.execute(f"drop table {na}_{cl}{sec}_{su}_{date}")
             self.db.commit()
-            
-            self.msgbox.showinfo("Report","Attendance report has been created and sent.")
+    
             self.master.destroy()
             return
         except:
@@ -300,6 +391,14 @@ class win:
             self.cursor.execute(f"drop table if exists {na}_{cl}{sec}_{su}_{date}")
             self.cursor.execute(f"delete from otplist where id = '{tid}'")
             self.db.commit()
+            self.classentry.bind("<Enter>",self.classenter)
+            self.classentry.bind("<Leave>",self.classleave)
+            self.secentry.bind("<Enter>",self.secenter)
+            self.secentry.bind("<Leave>",self.secleave)
+            self.identry.bind("<Enter>",self.identer)
+            self.identry.bind("<Leave>",self.idleave)
+            self.passentry.bind("<Enter>",self.passenter)
+            self.passentry.bind("<Leave>",self.passleave)
             return
         else:
             pass
@@ -322,6 +421,9 @@ class win:
             data.insert(0,self.cursor.column_names)
         except:
             self.msgbox.showwarning("Error","Something went wrong...")
+            self.cursor.execute(f"drop table if exists {na}_{cl}{sec}_{su}_{date}")
+            self.cursor.execute(f"delete from otplist where id = '{tid}'")
+            self.db.commit()
             return
         else:
             rows = []
@@ -333,6 +435,7 @@ class win:
             with open(filen, 'w') as csvfile:  
                 csvwriter = csv.writer(csvfile)
                 csvwriter.writerows(rows)
+            self.msgbox.showinfo("Report","Attendance report has been created and sent.")
 
 
     def att(self):
