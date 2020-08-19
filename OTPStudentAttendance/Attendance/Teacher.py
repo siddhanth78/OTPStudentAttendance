@@ -48,6 +48,8 @@ class win:
         self.titlelab.pack(anchor=CENTER)
 
         self.attbut = Button(self.master,text = "Attendance Records",width=50,bg='black',fg='orange',command = self.att)
+        self.attbut.bind("<Enter>",self.abutenter)
+        self.attbut.bind("<Leave>",self.abutleave)
         self.attbut.pack(anchor=CENTER)
 
         self.seplab1 = Label(master,bg='black')
@@ -117,6 +119,8 @@ class win:
         self.nslab.pack(anchor=CENTER)
 
         self.enterbutton = Button(self.master,text = "OK",width=50,bg='black',fg='orange',command=self.generate)
+        self.enterbutton.bind("<Enter>",self.butenter)
+        self.enterbutton.bind("<Leave>",self.butleave)
         self.enterbutton.pack(anchor=CENTER)
 
         self.msgbox = messagebox
@@ -186,6 +190,19 @@ class win:
         self.secentry.config(bg='black',fg='orange')
         self.secentry.unbind("<Enter>")
         self.secentry.unbind("<Leave>")
+
+
+    def butenter(self,event):
+        self.enterbutton.config(fg='black',bg='orange')
+
+    def butleave(self,event):
+        self.enterbutton.config(fg='orange',bg='black')
+
+    def abutenter(self,event):
+        self.attbut.config(fg='black',bg='orange')
+
+    def abutleave(self,event):
+        self.attbut.config(fg='orange',bg='black')
         
 
     def generate(self):
