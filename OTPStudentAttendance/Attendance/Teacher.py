@@ -473,10 +473,10 @@ class win:
 def main():
     try:
         mydb = mysql.connector.connect(
-            host="remotemysql.com",
-            user="cHSothTCaR",
-            database="cHSothTCaR",
-            passwd="IJNRFI6eOd",
+            host="sql12.freemysqlhosting.net",
+            user="sql12390476",
+            database="sql12390476",
+            passwd="CapfLbV68i"
             )
     except:
         messagebox.showwarning("Error","Connect to the internet and try again.")
