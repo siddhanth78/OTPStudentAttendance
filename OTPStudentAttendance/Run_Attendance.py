@@ -38,10 +38,12 @@ class win:
         
         if teach==1 and stud==0:
             self.master.destroy()
-            os.system(win.x+"/Teacher.py")
+            from Attendance import Teacher
+            Teacher.main()
         elif teach==0 and stud==1:
             self.master.destroy()
-            os.system(win.x+"/Student.py")
+            from Attendance import Student
+            Student.main()
         else:
             self.msgbox.showwarning("Invalid","Please select one box.")
             return
