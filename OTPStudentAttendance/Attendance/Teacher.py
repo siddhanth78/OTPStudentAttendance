@@ -12,7 +12,7 @@ class win:
 
     x = os.getcwd()
     x = x.replace("\\","/")
-    x = x+"/Attendance"
+   # x = x+"/Attendance"
 
     def __init__(self , master , db):
 
@@ -404,6 +404,7 @@ class win:
             self.master.destroy()
             return
         except:
+            raise
             dd = datetime.datetime.now().date()
             date = dd.strftime("%x")
             date = date.replace("/","_")
@@ -434,7 +435,6 @@ class win:
         date = d
         
         import csv
-        
         try:
             self.cursor.execute(f"select * from {na}_{cl}{sec}_{su}_{date}")
             data = self.cursor.fetchall()
@@ -452,10 +452,13 @@ class win:
                 lii = [sid,nam,p]
                 rows.append(lii)
             filen = f"{win.x}/{na}_{cl}{sec}_{su}_{date}.csv"
+            if(os.path.exists(filen)==False):
+                fille = open(filen,'x')
+                fille.close()
             with open(filen, 'w') as csvfile:  
                 csvwriter = csv.writer(csvfile)
                 csvwriter.writerows(rows)
-            self.msgbox.showinfo("Report","Attendance report has been created and sent.")
+             self.msgbox.showinfo("Report","Attendance report has been created and sent.")
 
 
     def att(self):
